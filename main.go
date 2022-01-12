@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-type CurrentAccount struct{
-	holder string
-	agencyNumber int
+type CurrentAccount struct {
+	holder        string
+	agencyNumber  int
 	accountNumber int
-	balance float64
+	balance       float64
 }
 
 func (c *CurrentAccount) toWithdraw(withdrawValue float64) string {
@@ -21,22 +21,6 @@ func (c *CurrentAccount) toWithdraw(withdrawValue float64) string {
 }
 
 func main() {
-	/*
-	accountAlberto := CurrentAccount{holder: "Alberto Parente", agencyNumber: 123, accountNumber: 123456, balance: 150.00}
-	accountJuliana := CurrentAccount{"Juliana", 321, 654321, 100.00}
-
-	fmt.Println(accountAlberto, accountJuliana)
-
-	var accountJulia *CurrentAccount
-	accountJulia = new(CurrentAccount)
-	accountJulia.holder = "Julia"
-	accountJulia.agencyNumber = 147
-	accountJulia.accountNumber = 1478963
-	accountJulia.balance = 200.00
-
-	fmt.Println(*accountJulia)
-	*/
-
 	accountAlberto := CurrentAccount{}
 	accountAlberto.holder = "Alberto Parente"
 	accountAlberto.agencyNumber = 123
@@ -51,4 +35,16 @@ func main() {
 	fmt.Println(accountAlberto.toWithdraw(-300))
 	fmt.Println(accountAlberto.balance)
 
+	fmt.Println(accountAlberto.balance)
+	status, value := accountAlberto.deposit(2000)
+	fmt.Println(status, value)
+}
+
+func (c *CurrentAccount) deposit(depositAmount float64) (string, float64) {
+	if depositAmount > 0 {
+		c.balance += depositAmount
+		return "Deposit made successfully!", c.balance
+	} else {
+		return "Deposit amount less than zero!", c.balance
+	}
 }
