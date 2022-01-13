@@ -36,15 +36,32 @@ func main() {
 	fmt.Println(accountAlberto.balance)
 
 	fmt.Println(accountAlberto.balance)
-	status, value := accountAlberto.deposit(2000)
+	status, value := accountAlberto.Deposit(2000)
 	fmt.Println(status, value)
+
+    accountJuliana := CurrentAccount{holder:"Gustavo", balance: 100}
+
+    fmt.Pirintln(accountJuliana)
+    fmt.Pirintln(accountAlberto)
+
+	status := accountAlberto.Transfer(200, accountJuliana)
 }
 
-func (c *CurrentAccount) deposit(depositAmount float64) (string, float64) {
+func (c *CurrentAccount) Deposit(depositAmount float64) (string, float64) {
 	if depositAmount > 0 {
 		c.balance += depositAmount
 		return "Deposit made successfully!", c.balance
 	} else {
 		return "Deposit amount less than zero!", c.balance
 	}
+}
+
+func (c *CurrentAccount) Transfer(transferValue float64, accountDestination CurrentAccount) bool {
+    if transferValue < c.balance {
+        c.balance -= transferValue 
+        accountDestination.toWithdraw(transferValue)
+        return true
+    } else {
+        return false
+    }
 }
