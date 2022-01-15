@@ -1,7 +1,8 @@
 package accounts
+import "github.com/go-app-bank/customers"
 
 type CurrentAccount struct {
-	Holder        string
+	Holder        customers.Holder
 	AgencyNumber  int
 	AccountNumber int
 	Balance       float64
