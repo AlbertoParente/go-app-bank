@@ -37,3 +37,7 @@ func (c *CurrentAccount) Transfer(transferValue float64, accountDestination *Cur
 		return false
 	}
 }
+
+func (c *CurrentAccount) GetBalance() float64 {
+    return c.Balance
+}

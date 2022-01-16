@@ -8,24 +8,25 @@ import (
 
 func main() {
 
-	accountAlberto := accounts.CurrentAccount{
-		Holder:        "Alberto Parente",
-		AgencyNumber:  987,
-		AccountNumber: 987654321,
-		Balance:       1000,
+	ClientAlberto := accounts.CurrentAccount{Holder: customers.Holder{
+        Name: "Alberto",
+        CPF: "123.123.123.12",
+        Profession: "Dev"},
+        AgencyNumber:123, 
+		AccountNumber: 123456, 
+		Balance:100
 	}
 
-	accountJuliana := accounts.CurrentAccount{
-		Holder:        "Juliana",
-		AgencyNumber:  987,
-		AccountNumber: 987654321,
-		Balance:       1000,
-	}
-
-	status := accountAlberto.Transfer(-200, &accountJuliana)
-
-	fmt.Println(status)
-	fmt.Println(accountAlberto)
-	fmt.Println(accountJuliana)
+	accountAlberto := accounts.CurrentAccount(
+		ClientAlberto, 
+		123, 
+		123456, 
+		100
+		fmt.Println(accountAlberto)
 	
+	accountExample := accounts.CurrentAccount{}
+    accountExample.Deposit(100)
+
+    fmt.Println(accountExample.GetBalance())
+
 }
