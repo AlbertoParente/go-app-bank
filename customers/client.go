@@ -1,4 +1,4 @@
-package clients
+package customers
 
 type Holder struct {
 	Name string
