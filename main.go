@@ -3,22 +3,27 @@ package main
 import (
 	"fmt"
 	"github.com/go-app-bank/accounts"
-	"github.com/go-app-bank/customers"
 )
+
+func PayBankingBillet(account checkAccount, valueBankingBillet float64) {
+	account.ToWithdraw(valueBankingBillet)
+}
+
+type checkAccount interface {
+	ToWithdraw(value float64) string
+}
 
 func main() {
 
-	clientAlberto := customers.Holder{
-        Name: "Alberto",
-        CPF: "123.123.123.12",
-        Profession: "Dev"}
-
-	accountAlberto := accounts.CurrentAccount{clientAlberto, 123, 123456}
+	accountAlberto := accounts.SavingsAccount{}
+	accountAlberto.Deposit(1000)
+	accountAlberto.ToWithdraw(100)
+	PayBankingBillet(&accountAlberto, 200)
 	fmt.Println(accountAlberto)
 	
-	accountExample := accounts.CurrentAccount{}
-    accountExample.Deposit(100)
-
-    fmt.Println(accountExample.GetBalance())
-
+	accountJuliana := accounts.SavingsAccount{}
+	accountJuliana.Deposit(1000)
+	accountJuliana.ToWithdraw(200)
+	PayBankingBillet(&accountJuliana, 300)
+	fmt.Println(accountJuliana)
 }

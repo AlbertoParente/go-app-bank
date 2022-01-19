@@ -29,3 +29,8 @@ func (c *SavingsAccount) ToWithdraw(withdrawValue float64) string {
 		return "Insufficient funds!"
 	}
 }
+
+func (c *SavingsAccount) GetBalance() float64 {
+    return c.balance
+}
+
