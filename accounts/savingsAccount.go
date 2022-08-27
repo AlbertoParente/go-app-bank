@@ -3,11 +3,11 @@ package accounts
 import "github.com/go-app-bank/customers"
 
 type SavingsAccount struct {
-	Holder customers.Holder
-	AgencyNumber int
+	Holder        customers.Holder
+	AgencyNumber  int
 	AccountNumber int
-	Operation int
-	balance float64
+	Operation     int
+	balance       float64
 }
 
 func (c *SavingsAccount) Deposit(depositAmount float64) (string, float64) {
@@ -31,6 +31,5 @@ func (c *SavingsAccount) ToWithdraw(withdrawValue float64) string {
 }
 
 func (c *SavingsAccount) GetBalance() float64 {
-    return c.balance
+	return c.balance
 }
-

@@ -40,5 +40,5 @@ func (c *CurrentAccount) Transfer(transferValue float64, accountDestination *Cur
 }
 
 func (c *CurrentAccount) GetBalance() float64 {
-    return c.balance
+	return c.balance
 }
